@@ -1,12 +1,13 @@
 public class StateAndReward {
 	
 
+	
+
 	/* State discretization function for the angle controller */
 	public static String getStateAngle(double angle, double vx, double vy) {
 
 		/* TODO: IMPLEMENT THIS FUNCTION */
 		
-
 		String state = "OneStateToRuleThemAll";
 		if(angle<-2.355){
 			state = "1";
@@ -30,7 +31,6 @@ public class StateAndReward {
 
 	/* Reward function for the angle controller */
 	public static double getRewardAngle(double angle, double vx, double vy) {
-
 		double reward = 0;
        
 		if(angle<1.30 && angle > -1.30){
