@@ -64,6 +64,8 @@ n_train_hours = 365 * 24
 values = reframed.values
 train = values[:n_train_hours, :]
 test = values[n_train_hours:, :]
+print(len(train))
+print(len(test))
 # split into input and outputs
 train_X, train_y = train[:, :-1], train[:, -1]
 test_X, test_y = test[:, :-1], test[:, -1]
@@ -115,6 +117,8 @@ savefig("history.png")
 yhat = model.predict(test_X)
 test_X = test_X.reshape((test_X.shape[0], test_X.shape[2]))
 # invert scaling for forecast
+print(yhat, test_X[:, 1:])
+
 inv_yhat = concatenate((yhat, test_X[:, 1:]), axis=1)
 inv_yhat = scaler.inverse_transform(inv_yhat)
 inv_yhat = inv_yhat[:, 0]
@@ -135,7 +139,6 @@ pyplot.figure()
 pyplot.plot(r1, test_y[:, 0])
 pyplot.plot(r1, yhat)
 savefig("yhat.png")
-
 
 r1 = range(0, len(test_X[:, 0]))
 pyplot.figure()
